@@ -1,0 +1,29 @@
+# Credentials and connection files
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+wallet/
+Wallet_*/
+*.zip
+tnsnames.ora
+sqlnet.ora
+cwallet.sso
+ewallet.p12
+
+# Run logs that may contain hostnames
+*.log
+spool/
+
+# Real documents
+*.pdf
+*.docx
+*.xlsx
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

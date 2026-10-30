@@ -1,0 +1,16 @@
+flowchart LR
+    P[Procurement] --> APEX
+    C[Compliance] --> APEX
+    A[Approvers] --> APEX
+    APEX[Oracle APEX\npages · authorization schemes] -->|package calls| API[vom_vendor_api]
+    API --> RISK[vom_risk_engine\nweighted explainable score]
+    API --> WF[vom_workflow\nrisk-based approval chain]
+    API --> DOC[vom_document_mgr\nexpiry · completeness]
+    WF --> NOTIFY[vom_notify\nAPEX_MAIL]
+    RISK --> DB[(VOM_ tables\naudit log · BLOB documents)]
+    WF --> DB
+    DOC --> DB
+    JOB[DBMS_SCHEDULER\ndaily expiry job] --> DOC
+    JOB --> NOTIFY
+    DB --> ORDS[ORDS REST API\n/v1/vendors read-only]
+    ORDS --> ERP[ERP / AP systems]
